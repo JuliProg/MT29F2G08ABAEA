@@ -1,10 +1,10 @@
-![Create new chip](https://github.com/JuliProg/MT29F4G08ABAEA/workflows/Create%20new%20chip/badge.svg?event=repository_dispatch)
-![ChipUpdate](https://github.com/JuliProg/MT29F4G08ABAEA/workflows/ChipUpdate/badge.svg)
+![Create new chip](https://github.com/JuliProg/MT29F2G08ABAEA/workflows/Create%20new%20chip/badge.svg?event=repository_dispatch)
+![ChipUpdate](https://github.com/JuliProg/MT29F2G08ABAEA/workflows/ChipUpdate/badge.svg)
 # Join the development of the project ([list of tasks](https://github.com/users/JuliProg/projects/1))
 
 
-# MT29F4G08ABAEA
-Implementation of the MT29F4G08ABAEA chip for the JuliProg programmer
+# MT29F2G08ABAEA
+Implementation of the MT29F2G08ABAEA chip for the JuliProg programmer
 
 Dependency injection, DI based on MEF framework is used to connect the chip to the programmer.
 
@@ -28,7 +28,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
         ChipAssembly()
         {
             myChip.devManuf = "Micron";
-            myChip.name = "MT29F4G08ABAEA";
+            myChip.name = "MT29F2G08ABAEA";
             myChip.chipID = "2CDC90A654";      // device ID - 2Ch DCh 90h A6h 54h
 
             myChip.width = Organization.x8;    // chip width - 8 bit
@@ -99,6 +99,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
         
 ```
 </section>
+
 
 
 
