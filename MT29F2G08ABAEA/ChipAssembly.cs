@@ -39,7 +39,7 @@ namespace MT29F2G08ABAEA
         ChipAssembly()
         {
             myChip.devManuf = "Micron";
-            myChip.name = "MT29F2G08ABAEAH4";
+            myChip.name = "MT29F2G08ABAEA";
             myChip.chipID = "2CDA909506";      // device ID - 2Ch DAh 90h 95h 06h 
 
             myChip.width = Organization.x8;    // chip width - 8 bit
