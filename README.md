@@ -28,14 +28,14 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
         ChipAssembly()
         {
             myChip.devManuf = "Micron";
-            myChip.name = "MT29F2G08ABAEA";
-            myChip.chipID = "2CDC90A654";      // device ID - 2Ch DCh 90h A6h 54h
+            myChip.name = "MT29F2G08ABAEAH4";
+            myChip.chipID = "2CDA909506";      // device ID - 2Ch DAh 90h 95h 06h 
 
             myChip.width = Organization.x8;    // chip width - 8 bit
             myChip.bytesPP = 2048;             // page size - 2048 byte (2Kb)
             myChip.spareBytesPP = 64;          // size Spare Area - 64 byte
             myChip.pagesPB = 64;               // the number of pages per block - 64 
-            myChip.bloksPLUN = 4096;           // number of blocks in CE - 4096
+            myChip.bloksPLUN = 2048;           // number of blocks in CE - 2048
             myChip.LUNs = 1;                   // the amount of CE in the chip
             myChip.colAdrCycles = 2;           // cycles for column addressing
             myChip.rowAdrCycles = 3;           // cycles for row addressing 
@@ -53,15 +53,6 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
                    Operations("Read_00h_30h").
                    Operations("PageProgram_80h_10h");
 
-```
-# Initial Invalid Block (s)
-```c#
-
-            
-            //------- Select the Initial Invalid Block (s) algorithm    https://github.com/JuliProg/Wiki/wiki/InitialInvalidBlock-----------
-                
-            myChip.InitialInvalidBlock = "InitInvalidBlock_v1";
-                
 ```
 # Chip registers (optional)
 ```c#
@@ -81,14 +72,26 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
             myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/ID-Register
                 "Id Register").
                 Size(5).
-                Operations("ReadId_90h");               
-                //Interpretation(ID_interpreting);
-            
+                Operations("ReadId_90h");
+            //Interpretation(ID_interpreting);
+
             myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/OTP
                 "OTP memory area").
                 Size(63360).
                 Operations("OTP_Mode_On_v1").
-                Operations("OTP_Mode_Off_v1");    
+                Operations("OTP_Mode_Off_v1");
+
+
+            myChip.registers.Add(
+                "Unique Id").
+                Size(32).
+                Operations("ReadUniqueId_EDh");
+
+            myChip.registers.Add(
+               "Parameter Page (ONFI parameter)").
+               Size(768).
+               Operations("ReadParameterPage_ECh");
+
 
 ```
 # Interpretation of ID-register values ​​(optional)
@@ -99,6 +102,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
         
 ```
 </section>
+
 
 
 
